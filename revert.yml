@@ -47,4 +47,12 @@
         lines:
           - no interface GigabitEthernet 0/0.10
           - no interface GigabitEthernet 0/0.20
+
+- name: save configuration
+  hosts: lab
+  gather_facts: no
+  tasks:
+    - name: write
+      ios_command:
+        commands: write
 ...
