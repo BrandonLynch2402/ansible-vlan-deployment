@@ -1,9 +1,15 @@
 ---
-- name: remove banners
+- name: remove banners and loopback interface descriptions
   hosts: lab
+  gather_facts: no
   tasks:
-  - name: remove login banners
-    ios_banner:
-      banner: login
-      state: absent
+    - name: remove login banners
+      ios_banner:
+        banner: login
+        state: absent
+
+    - name: remove loopback interface descriptions
+      ios_config:
+        lines: no description
+        parents: interface Loopback0
 ...

@@ -1,11 +1,19 @@
 ---
-- name: configure banners and loopback description
+- name: configure banners and loopback descriptions
   hosts: lab
+  gather_facts: no
   tasks:
-  - name: configure login banners
-    ios_banner:
-      banner: login
-      text: |
-        Welcome to the Lab!
-      state: present
+    - name: configure login banners
+      ios_banner:
+        banner: login
+        text: |
+          Welcome to the Lab!
+        state: present
+
+    - name: add loopback interface descriptions
+      ios_interfaces:
+        config:
+          - name: Loopback0
+            description: 'Interface created using Ansible'
+        state: merged
 ...
