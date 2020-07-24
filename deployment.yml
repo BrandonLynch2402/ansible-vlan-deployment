@@ -1,0 +1,11 @@
+---
+- name: configure banners and loopback description
+  hosts: lab
+  tasks:
+  - name: configure login banners
+    ios_banner:
+      banner: login
+      text: |
+        Welcome to the Lab!
+      state: present
+...

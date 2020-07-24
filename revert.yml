@@ -1,0 +1,9 @@
+---
+- name: remove banners
+  hosts: lab
+  tasks:
+  - name: remove login banners
+    ios_banner:
+      banner: login
+      state: absent
+...
