@@ -23,4 +23,18 @@
           - vlan_id: 10
           - vlan_id: 20
         state: deleted
+
+- name: remove vlan port assignments
+  hosts: accessswitches
+  gather_facts: no
+  tasks:
+    - name: remove vlan 10 assignment from GigabitEthernet 0/1
+      ios_config:
+        lines: switchport access vlan 1
+        parents: interface GigabitEthernet 0/1
+    
+    - name: remove vlan 20 assignment from GigabitEthernet 0/2
+      ios_config:
+        lines: switchport access vlan 1
+        parents: interface GigabitEthernet 0/2
 ...

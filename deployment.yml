@@ -28,4 +28,22 @@
             vlan_id: 10
           - name: Sales
             vlan_id: 20
+
+- name: assign vlan to ports
+  hosts: accessswitches
+  gather_facts: no
+  tasks:
+    - name: assign vlan 10 to GigabitEthernet 0/1
+      ios_config:
+        lines:
+          - switchport mode access
+          - switchport access vlan 10
+        parents: interface GigabitEthernet 0/1
+
+    - name: assign vlan 20 to GigabitEthernet 0/2
+      ios_config:
+        lines:
+          - switchport mode access
+          - switchport access vlan 20
+        parents: interface GigabitEthernet 0/2
 ...
