@@ -12,4 +12,15 @@
       ios_config:
         lines: no description
         parents: interface Loopback0
+
+- name: remove vlans
+  hosts: switches
+  gather_facts: no
+  tasks:
+    - name: remove vlan 10 and 20
+      ios_vlans:
+        config:
+          - vlan_id: 10
+          - vlan_id: 20
+        state: deleted
 ...

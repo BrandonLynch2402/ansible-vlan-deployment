@@ -16,4 +16,16 @@
           - name: Loopback0
             description: 'Interface created using Ansible'
         state: merged
+
+- name: configure vlans
+  hosts: switches
+  gather_facts: no
+  tasks:
+    - name: add vlan 10 and 20
+      ios_vlans:
+        config:
+          - name: Accounting
+            vlan_id: 10
+          - name: Sales
+            vlan_id: 20
 ...
