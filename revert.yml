@@ -37,4 +37,14 @@
       ios_config:
         lines: switchport access vlan 1
         parents: interface GigabitEthernet 0/2
+
+- name: remove router on a stick configurations
+  hosts: routers
+  gather_facts: no
+  tasks:
+    - name: remove router on a stick sub-interfaces
+      ios_config:
+        lines:
+          - no interface GigabitEthernet 0/0.10
+          - no interface GigabitEthernet 0/0.20
 ...

@@ -46,4 +46,22 @@
           - switchport mode access
           - switchport access vlan 20
         parents: interface GigabitEthernet 0/2
+
+- name: configure router on a stick
+  hosts: routers
+  gather_facts: no
+  tasks:
+    - name: configure GigabitEthernet 0/0.10
+      ios_config:
+        lines:
+          - encapsulation dot1q 10
+          - ip address 10.0.10.1 255.255.255.0
+        parents: interface GigabitEthernet 0/0.10
+
+    - name: configure GigabitEthernet 0/0.20
+      ios_config:
+        lines:
+          - encapsulation dot1q 20
+          - ip address 10.0.20.1 255.255.255.0
+        parents: interface GigabitEthernet 0/0.20
 ...
