@@ -1,0 +1,12 @@
+---
+- name: configure restconf
+  hosts: switches
+  gather_facts: no
+  tasks:
+    - name: configure restconf on all devices
+      ios_config:
+        lines:
+          - ip http secure-server
+          - ip http authentication local
+          - restconf
+...
